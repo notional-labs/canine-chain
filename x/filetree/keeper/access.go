@@ -29,7 +29,7 @@ func HasViewingAccess(file types.Files, user string) bool {
 }
 
 func HasEditAccess(file types.Files, user string) bool {
-	//I believe pvacc above stands for 'private viewing access' so we should use peacc for 'private editing access'?
+	// I believe pvacc above stands for 'private viewing access' so we should use peacc for 'private editing access'?
 	peacc := file.EditAccess
 	trackingNumber := file.TrackingNumber
 
@@ -42,12 +42,12 @@ func HasEditAccess(file types.Files, user string) bool {
 
 	addressString := fmt.Sprintf("%x", hash)
 
-	//if editor exists, body of if statement executes and ok is returned as 'true'
+	// if editor exists, body of if statement executes and ok is returned as 'true'
 	if _, ok := jvacc[addressString]; ok {
 		return ok
 	}
 
-	//During sandbox testing, if editor doesn't exist, the body of the if statement never executes, so we need to return false
+	// During sandbox testing, if editor doesn't exist, the body of the if statement never executes, so we need to return false
 	return false
 }
 
@@ -60,7 +60,7 @@ func IsOwner(file types.Files, user string) bool {
 	hash := h.Sum(nil)
 	accountHash := fmt.Sprintf("%x", hash)
 
-	//h1 is so named as to differentiate it from h above--else compiler complains
+	// h1 is so named as to differentiate it from h above--else compiler complains
 	h1 := sha256.New()
 	h1.Write([]byte(fmt.Sprintf("o%s%s", merklePath, accountHash)))
 	hash1 := h1.Sum(nil)
@@ -92,7 +92,7 @@ func MakeEditorAddress(trackingNumber string, user string) string {
 
 // Owner address is whoever owns this file/folder
 func MakeOwnerAddress(merklePath string, user string) string {
-	//make sure that user was already hex(hashed) before it was passed into
+	// make sure that user was already hex(hashed) before it was passed into
 	//this function
 	h := sha256.New()
 	h.Write([]byte(fmt.Sprintf("o%s%s", merklePath, user)))

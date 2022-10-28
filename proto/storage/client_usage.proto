@@ -4,8 +4,6 @@ package jackaldao.canine.storage;
 option go_package = "github.com/jackal-dao/canine/x/storage/types";
 
 message ClientUsage {
-  string address = 1; 
-  string usage = 2; 
-  
+  string address = 1;
+  string usage = 2;
 }
-

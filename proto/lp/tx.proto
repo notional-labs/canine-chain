@@ -13,15 +13,16 @@ service Msg {
   rpc JoinPool(MsgJoinPool) returns (MsgJoinPoolResponse);
   rpc ExitPool(MsgExitPool) returns (MsgExitPoolResponse);
   rpc Swap(MsgSwap) returns (MsgSwapResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
 
 message MsgCreateLPool {
   string creator = 1;
   // Creator needs to deposit coins to create pool.
-  // Input format: 
+  // Input format:
   // "{amount0}{denomination},...,{amountN}{denominationN}"
-  repeated cosmos.base.v1beta1.DecCoin coins = 2 [(gogoproto.nullable) = false];
+  repeated cosmos.base.v1beta1.DecCoin coins = 2
+      [ (gogoproto.nullable) = false ];
   // AMM model id used to balance the pool.
   uint32 amm_Id = 3;
   // Swap fee charged to swap transaction (swap x swap_fee_multi).
@@ -47,8 +48,9 @@ message MsgJoinPool {
   string poolName = 2;
   // Input format:
   //"{amount0}{denomination},...,{amountN}{denominationN}"
-  repeated cosmos.base.v1beta1.DecCoin coins = 3 [(gogoproto.nullable) = false];
-  // The contributor can choose lock duration 
+  repeated cosmos.base.v1beta1.DecCoin coins = 3
+      [ (gogoproto.nullable) = false ];
+  // The contributor can choose lock duration
   int64 lockDuration = 4;
 }
 
@@ -63,8 +65,7 @@ message MsgExitPool {
   int64 shares = 3;
 }
 
-message MsgExitPoolResponse {
-}
+message MsgExitPoolResponse {}
 
 // Swap a coin for other coin in a liquidity pool.
 // Swap fee is deducted from coin input before swap output is computed.
@@ -73,13 +74,13 @@ message MsgSwap {
   string poolName = 2;
   // Coin input to swap in return for the desired coin. Coin output from swap is
   // determined by the input amount.
-  cosmos.base.v1beta1.DecCoin coin_input = 3 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.DecCoin coin_input = 3 [ (gogoproto.nullable) = false ];
   // Minimum coin output from this swap. Swap will not proceed if computed
   // swap output is less than this amount.
-  cosmos.base.v1beta1.DecCoin min_coin_output = 4 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.DecCoin min_coin_output = 4
+      [ (gogoproto.nullable) = false ];
 }
 
-message MsgSwapResponse {
-}
+message MsgSwapResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

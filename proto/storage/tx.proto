@@ -11,16 +11,17 @@ option go_package = "github.com/jackal-dao/canine/x/storage/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc PostContract(MsgPostContract) returns (MsgPostContractResponse);
+  rpc PostContract(MsgPostContract) returns (MsgPostContractResponse);
   rpc Postproof(MsgPostproof) returns (MsgPostproofResponse);
   rpc SignContract(MsgSignContract) returns (MsgSignContractResponse);
   rpc SetProviderIp(MsgSetProviderIp) returns (MsgSetProviderIpResponse);
-  rpc SetProviderTotalspace(MsgSetProviderTotalspace) returns (MsgSetProviderTotalspaceResponse);
+  rpc SetProviderTotalspace(MsgSetProviderTotalspace)
+      returns (MsgSetProviderTotalspaceResponse);
   rpc InitProvider(MsgInitProvider) returns (MsgInitProviderResponse);
   rpc CancelContract(MsgCancelContract) returns (MsgCancelContractResponse);
   rpc BuyStorage(MsgBuyStorage) returns (MsgBuyStorageResponse);
   rpc ClaimStray(MsgClaimStray) returns (MsgClaimStrayResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
 
 message MsgPostContract {
@@ -34,8 +35,7 @@ message MsgPostContract {
   string fid = 8;
 }
 
-message MsgPostContractResponse {
-}
+message MsgPostContractResponse {}
 
 message MsgCreateContracts {
   string creator = 1;
@@ -100,8 +100,7 @@ message MsgItem {
   string hashlist = 2;
 }
 
-message MsgItemResponse {
-}
+message MsgItemResponse {}
 
 message MsgPostproof {
   string creator = 1;
@@ -110,9 +109,7 @@ message MsgPostproof {
   string cid = 4;
 }
 
-message MsgPostproofResponse {
-  string merkle = 1;
-}
+message MsgPostproofResponse { string merkle = 1; }
 
 message MsgCreateActiveDeals {
   string creator = 1;
@@ -155,8 +152,7 @@ message MsgSignContract {
   string cid = 2;
 }
 
-message MsgSignContractResponse {
-}
+message MsgSignContractResponse {}
 
 message MsgCreateProviders {
   string creator = 1;
@@ -187,16 +183,14 @@ message MsgSetProviderIp {
   string ip = 2;
 }
 
-message MsgSetProviderIpResponse {
-}
+message MsgSetProviderIpResponse {}
 
 message MsgSetProviderTotalspace {
   string creator = 1;
   string space = 2;
 }
 
-message MsgSetProviderTotalspaceResponse {
-}
+message MsgSetProviderTotalspaceResponse {}
 
 message MsgInitProvider {
   string creator = 1;
@@ -204,16 +198,14 @@ message MsgInitProvider {
   string totalspace = 3;
 }
 
-message MsgInitProviderResponse {
-}
+message MsgInitProviderResponse {}
 
 message MsgCancelContract {
   string creator = 1;
   string cid = 2;
 }
 
-message MsgCancelContractResponse {
-}
+message MsgCancelContractResponse {}
 
 message MsgBuyStorage {
   string creator = 1;
@@ -223,15 +215,13 @@ message MsgBuyStorage {
   string paymentDenom = 5;
 }
 
-message MsgBuyStorageResponse {
-}
+message MsgBuyStorageResponse {}
 
 message MsgClaimStray {
   string creator = 1;
   string cid = 2;
 }
 
-message MsgClaimStrayResponse {
-}
+message MsgClaimStrayResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

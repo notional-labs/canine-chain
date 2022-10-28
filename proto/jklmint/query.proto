@@ -21,11 +21,12 @@ service Query {
     option (google.api.http).get = "/cosmos/mint/v1beta1/inflation";
   }
   // Queries a list of GetInflation items.
-	rpc GetInflation(QueryGetInflationRequest) returns (QueryGetInflationResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/jklmint/get_inflation";
-	}
+  rpc GetInflation(QueryGetInflationRequest)
+      returns (QueryGetInflationResponse) {
+    option (google.api.http).get = "/jackal-dao/canine/jklmint/get_inflation";
+  }
 
-// this line is used by starport scaffolding # 2
+  // this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -34,7 +35,7 @@ message QueryParamsRequest {}
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
   // params holds all the parameters of this module.
-  Params params = 1 [(gogoproto.nullable) = false];
+  Params params = 1 [ (gogoproto.nullable) = false ];
 }
 
 // QueryInflationRequest is the request type for the Query/Inflation RPC method.
@@ -44,14 +45,14 @@ message QueryInflationRequest {}
 // method.
 message QueryInflationResponse {
   // inflation is the current minting inflation value.
-  bytes inflation = 1 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];
+  bytes inflation = 1 [
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec",
+    (gogoproto.nullable) = false
+  ];
 }
 
-message QueryGetInflationRequest {
-}
+message QueryGetInflationRequest {}
 
-message QueryGetInflationResponse {
-  string inflation = 1;
-}
+message QueryGetInflationResponse { string inflation = 1; }
 
 // this line is used by starport scaffolding # 3

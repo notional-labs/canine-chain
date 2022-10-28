@@ -4,9 +4,8 @@ package jackaldao.canine.storage;
 option go_package = "github.com/jackal-dao/canine/x/storage/types";
 
 message Proofs {
-  string cid = 1; 
-  string item = 2; 
-  string hashes = 3; 
+  string cid = 1;
+  string item = 2;
+  string hashes = 3;
   string creator = 4;
 }
-

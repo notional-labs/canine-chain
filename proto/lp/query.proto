@@ -19,52 +19,67 @@ service Query {
     option (google.api.http).get = "/jackal-dao/canine/lp/params";
   }
   // Queries a LPool by index.
-	rpc LPool(QueryGetLPoolRequest) returns (QueryGetLPoolResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/l_pool/{index}";
-	}
+  rpc LPool(QueryGetLPoolRequest) returns (QueryGetLPoolResponse) {
+    option (google.api.http).get = "/jackal-dao/canine/lp/l_pool/{index}";
+  }
 
-	// Queries a list of LPool items.
-	rpc LPoolAll(QueryAllLPoolRequest) returns (QueryAllLPoolResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/l_pool";
-	}
+  // Queries a list of LPool items.
+  rpc LPoolAll(QueryAllLPoolRequest) returns (QueryAllLPoolResponse) {
+    option (google.api.http).get = "/jackal-dao/canine/lp/l_pool";
+  }
 
-// Queries a LProviderRecord by pool name and provider address.
-	rpc LProviderRecord(QueryGetLProviderRecordRequest) returns (QueryGetLProviderRecordResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/l_provider_record/{poolName}/{provider}";
-	}
+  // Queries a LProviderRecord by pool name and provider address.
+  rpc LProviderRecord(QueryGetLProviderRecordRequest)
+      returns (QueryGetLProviderRecordResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/l_provider_record/{poolName}/{provider}";
+  }
 
-// Estimate coin output from a swap.
-	rpc EstimateSwapOut(QueryEstimateSwapOutRequest) returns (QueryEstimateSwapOutResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/estimate_out/{poolName}/{inputCoin}";
-	}
+  // Estimate coin output from a swap.
+  rpc EstimateSwapOut(QueryEstimateSwapOutRequest)
+      returns (QueryEstimateSwapOutResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/estimate_out/{poolName}/{inputCoin}";
+  }
 
-// Estimate coin input to get desired coin output from a swap.
-	rpc EstimateSwapIn(QueryEstimateSwapInRequest) returns (QueryEstimateSwapInResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/estimate_in/{poolName}/{outputCoins}";
-	}
+  // Estimate coin input to get desired coin output from a swap.
+  rpc EstimateSwapIn(QueryEstimateSwapInRequest)
+      returns (QueryEstimateSwapInResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/estimate_in/{poolName}/{outputCoins}";
+  }
 
-// Estimate coin inputs to get desired amount of LPToken.
-	rpc EstimateContribution(QueryEstimateContributionRequest) returns (QueryEstimateContributionResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/estimate_contribution/{poolName}/{desiredAmount}";
-	}
+  // Estimate coin inputs to get desired amount of LPToken.
+  rpc EstimateContribution(QueryEstimateContributionRequest)
+      returns (QueryEstimateContributionResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/estimate_contribution/{poolName}/"
+        "{desiredAmount}";
+  }
 
-// Query coins to deposit to make valid liquidity pair.
-// Input one coin and get other coins to deposit to make liquidity pair.
-	rpc MakeValidPair(QueryMakeValidPairRequest) returns (QueryMakeValidPairResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/make_pair/{poolName}/{coin}";
-	}
+  // Query coins to deposit to make valid liquidity pair.
+  // Input one coin and get other coins to deposit to make liquidity pair.
+  rpc MakeValidPair(QueryMakeValidPairRequest)
+      returns (QueryMakeValidPairResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/make_pair/{poolName}/{coin}";
+  }
 
-// Estimate amoutn of coins returned by burning a LPToken.
-	rpc EstimatePoolRemove(QueryEstimatePoolRemoveRequest) returns (QueryEstimatePoolRemoveResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/estimate_pool_remove/{amount}";
-	}
+  // Estimate amoutn of coins returned by burning a LPToken.
+  rpc EstimatePoolRemove(QueryEstimatePoolRemoveRequest)
+      returns (QueryEstimatePoolRemoveResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/estimate_pool_remove/{amount}";
+  }
 
-// Queries a list of ListRecordsFromPool items.
-	rpc ListRecordsFromPool(QueryListRecordsFromPoolRequest) returns (QueryListRecordsFromPoolResponse) {
-		option (google.api.http).get = "/jackal-dao/canine/lp/list_records_from_pool/{poolName}";
-	}
+  // Queries a list of ListRecordsFromPool items.
+  rpc ListRecordsFromPool(QueryListRecordsFromPoolRequest)
+      returns (QueryListRecordsFromPoolResponse) {
+    option (google.api.http).get =
+        "/jackal-dao/canine/lp/list_records_from_pool/{poolName}";
+  }
 
-// this line is used by starport scaffolding # 2
+  // this line is used by starport scaffolding # 2
 }
 
 // QueryParamsRequest is request type for the Query/Params RPC method.
@@ -73,24 +88,22 @@ message QueryParamsRequest {}
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
   // params holds all the parameters of this module.
-  Params params = 1 [(gogoproto.nullable) = false];
+  Params params = 1 [ (gogoproto.nullable) = false ];
 }
 
-message QueryGetLPoolRequest {
-	  string index = 1;
-}
+message QueryGetLPoolRequest { string index = 1; }
 
 message QueryGetLPoolResponse {
-	LPool lPool = 1 [(gogoproto.nullable) = false];
+  LPool lPool = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryAllLPoolRequest {
-	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
 }
 
 message QueryAllLPoolResponse {
-	repeated LPool lPool = 1 [(gogoproto.nullable) = false];
-	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+  repeated LPool lPool = 1 [ (gogoproto.nullable) = false ];
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
 message QueryGetLProviderRecordRequest {
@@ -99,7 +112,7 @@ message QueryGetLProviderRecordRequest {
 }
 
 message QueryGetLProviderRecordResponse {
-	LProviderRecord lProviderRecord = 1 [(gogoproto.nullable) = false];
+  LProviderRecord lProviderRecord = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryEstimateSwapOutRequest {
@@ -108,7 +121,7 @@ message QueryEstimateSwapOutRequest {
 }
 
 message QueryEstimateSwapOutResponse {
-  cosmos.base.v1beta1.Coin outputCoin = 1 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin outputCoin = 1 [ (gogoproto.nullable) = false ];
 }
 
 message QueryEstimateSwapInRequest {
@@ -117,7 +130,7 @@ message QueryEstimateSwapInRequest {
 }
 
 message QueryEstimateSwapInResponse {
-  cosmos.base.v1beta1.Coin inputCoins = 1 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin inputCoins = 1 [ (gogoproto.nullable) = false ];
 }
 
 // Estimate amount of coins to deposit to get desired amount of LPToken
@@ -127,7 +140,7 @@ message QueryEstimateContributionRequest {
 }
 
 message QueryEstimateContributionResponse {
-  repeated cosmos.base.v1beta1.Coin coins = 1 [(gogoproto.nullable) = false];
+  repeated cosmos.base.v1beta1.Coin coins = 1 [ (gogoproto.nullable) = false ];
 }
 
 // Query amount of coins to deposit to make a valid liquidity pair
@@ -137,7 +150,7 @@ message QueryMakeValidPairRequest {
 }
 
 message QueryMakeValidPairResponse {
-  cosmos.base.v1beta1.Coin coin = 1 [(gogoproto.nullable) = false];
+  cosmos.base.v1beta1.Coin coin = 1 [ (gogoproto.nullable) = false ];
 }
 
 // Estimate pool coins returned by burning LPToken
@@ -147,15 +160,13 @@ message QueryEstimatePoolRemoveRequest {
 }
 
 message QueryEstimatePoolRemoveResponse {
-  repeated cosmos.base.v1beta1.Coin coins = 1[(gogoproto.nullable) = false];
+  repeated cosmos.base.v1beta1.Coin coins = 1 [ (gogoproto.nullable) = false ];
 }
 
-message QueryListRecordsFromPoolRequest {
-  string poolName = 1;
-}
+message QueryListRecordsFromPoolRequest { string poolName = 1; }
 
 message QueryListRecordsFromPoolResponse {
-	repeated LProviderRecord records = 1 [(gogoproto.nullable) = false];
+  repeated LProviderRecord records = 1 [ (gogoproto.nullable) = false ];
 }
 
 // this line is used by starport scaffolding # 3

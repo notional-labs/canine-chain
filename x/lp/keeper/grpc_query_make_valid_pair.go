@@ -40,7 +40,7 @@ func (k Keeper) MakeValidPair(
 	if err != nil {
 		return nil, sdkerrors.Wrapf(
 			sdkerrors.ErrInvalidRequest,
-			"Error occured while estimating other coins to deposit",
+			"Error occurred while estimating other coins to deposit",
 		)
 	}
 

@@ -7,7 +7,7 @@ import (
 	notiTypes "github.com/jackal-dao/canine/x/notifications/types"
 )
 
-//if bool returns 'true', we successfully notified everyone, otherwise if it's false we return the error
+// if bool returns 'true', we successfully notified everyone, otherwise if it's false we return the error
 //viewers will have their own message from editors, so should send in a general notification, and a string of viewers or editors
 
 func notify(k msgServer, ctx sdk.Context, recipients string, notification string, sender string, hashPath string, hashPathOwner string) (bool, error) {
@@ -32,21 +32,21 @@ func notify(k msgServer, ctx sdk.Context, recipients string, notification string
 			notiCounter.Counter,
 			v,
 		)
-		//If it exists, we return false to return the error
+		// If it exists, we return false to return the error
 		if isFound {
 			return false, notiTypes.ErrNotificationAlreadySet
 		}
 
-		//Deactivating this for now per discussion with Erin
+		// Deactivating this for now per discussion with Erin
 		// if !isSender(notiCounter, sender) {
 		// 	return false, notiTypes.ErrCannotAddSenders
 		// }
 
 		var notifications = notiTypes.Notifications{
-			Sender:       sender, //delete this for security?
+			Sender:       sender, // delete this for security?
 			Count:        notiCounter.Counter,
 			Notification: notification,
-			Address:      v, //This will be hashed before it enters the keeper
+			Address:      v, // This will be hashed before it enters the keeper
 
 		}
 
@@ -67,7 +67,7 @@ func notify(k msgServer, ctx sdk.Context, recipients string, notification string
 
 }
 
-//Deacitivating this for now per discussion with Erin
+// Deacitivating this for now per discussion with Erin
 
 // func isSender(notiCounter notiTypes.NotiCounter, user string) bool {
 

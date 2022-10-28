@@ -4,10 +4,8 @@ package jackaldao.canine.dsig;
 option go_package = "github.com/jackal-dao/canine/x/dsig/types";
 
 message Form {
-  string ffid = 1; 
-  string cid = 2; 
-  string fid = 3; 
-  string signees = 4; 
-  
+  string ffid = 1;
+  string cid = 2;
+  string fid = 3;
+  string signees = 4;
 }
-

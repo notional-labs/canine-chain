@@ -18,9 +18,8 @@ service Msg {
   rpc AddRecord(MsgAddRecord) returns (MsgAddRecordResponse);
   rpc DelRecord(MsgDelRecord) returns (MsgDelRecordResponse);
   rpc Init(MsgInit) returns (MsgInitResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
-
 
 message MsgRegister {
   string creator = 1;
@@ -29,8 +28,7 @@ message MsgRegister {
   string data = 4;
 }
 
-message MsgRegisterResponse {
-}
+message MsgRegisterResponse {}
 
 message MsgBid {
   string creator = 1;
@@ -38,8 +36,7 @@ message MsgBid {
   string bid = 3;
 }
 
-message MsgBidResponse {
-}
+message MsgBidResponse {}
 
 message MsgAcceptBid {
   string creator = 1;
@@ -47,16 +44,14 @@ message MsgAcceptBid {
   string from = 3;
 }
 
-message MsgAcceptBidResponse {
-}
+message MsgAcceptBidResponse {}
 
 message MsgCancelBid {
   string creator = 1;
   string name = 2;
 }
 
-message MsgCancelBidResponse {
-}
+message MsgCancelBidResponse {}
 
 message MsgList {
   string creator = 1;
@@ -64,34 +59,29 @@ message MsgList {
   string price = 3;
 }
 
-message MsgListResponse {
-}
+message MsgListResponse {}
 
 message MsgBuy {
   string creator = 1;
   string name = 2;
 }
 
-message MsgBuyResponse {
-}
+message MsgBuyResponse {}
 
 message MsgDelist {
   string creator = 1;
   string name = 2;
 }
 
-message MsgDelistResponse {
-}
-
+message MsgDelistResponse {}
 
 message MsgTransfer {
   string creator = 1;
   string name = 2;
-  string reciever = 3;
+  string receiver = 3;
 }
 
-message MsgTransferResponse {
-}
+message MsgTransferResponse {}
 
 message MsgAddRecord {
   string creator = 1;
@@ -101,22 +91,17 @@ message MsgAddRecord {
   string record = 5;
 }
 
-message MsgAddRecordResponse {
-}
+message MsgAddRecordResponse {}
 
 message MsgDelRecord {
   string creator = 1;
   string name = 2;
 }
 
-message MsgDelRecordResponse {
-}
+message MsgDelRecordResponse {}
 
-message MsgInit {
-  string creator = 1;
-}
+message MsgInit { string creator = 1; }
 
-message MsgInitResponse {
-}
+message MsgInitResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

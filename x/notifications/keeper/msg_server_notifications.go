@@ -32,7 +32,7 @@ func (k msgServer) CreateNotifications(goCtx context.Context, msg *types.MsgCrea
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "notification already set")
 	}
 
-	//Check if sender is permitted to notify
+	// Check if sender is permitted to notify
 
 	if !isSender(notiCounter, msg.Creator) {
 		return nil, types.ErrCannotAddSenders
@@ -43,7 +43,7 @@ func (k msgServer) CreateNotifications(goCtx context.Context, msg *types.MsgCrea
 		Count:        notiCounter.Counter,
 		Notification: msg.Notification,
 		Address:      msg.Address,
-		//hashPath and hashPathOwner not needed in this module. Will be used in filetree
+		// hashPath and hashPathOwner not needed in this module. Will be used in filetree
 	}
 
 	k.SetNotifications(
@@ -89,7 +89,7 @@ func (k msgServer) DeleteNotifications(goCtx context.Context, msg *types.MsgDele
 	valFound, isFound := k.GetNotifications(
 		ctx,
 		msg.Count,
-		msg.Creator, //this needs to be fleshed out with permissions checking
+		msg.Creator, // this needs to be fleshed out with permissions checking
 	)
 	if !isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "index not set")
@@ -103,7 +103,7 @@ func (k msgServer) DeleteNotifications(goCtx context.Context, msg *types.MsgDele
 	k.RemoveNotifications(
 		ctx,
 		msg.Count,
-		msg.Creator, //this needs to be fleshed out with permissions checking
+		msg.Creator, // this needs to be fleshed out with permissions checking
 	)
 
 	return &types.MsgDeleteNotificationsResponse{}, nil

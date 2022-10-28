@@ -4,8 +4,6 @@ package jackaldao.canine.storage;
 option go_package = "github.com/jackal-dao/canine/x/storage/types";
 
 message FidCid {
-  string fid = 1; 
-  string cids = 2; 
-  
+  string fid = 1;
+  string cids = 2;
 }
-

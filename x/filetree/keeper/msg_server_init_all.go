@@ -16,7 +16,7 @@ func (k msgServer) InitAll(goCtx context.Context, msg *types.MsgInitAll) (*types
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	pubKey := types.Pubkey{
-		Address: msg.Creator, //create public key for message caller
+		Address: msg.Creator, // create public key for message caller
 		Key:     msg.Pubkey,
 	}
 

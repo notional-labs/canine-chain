@@ -28,7 +28,7 @@ func MakePrivateKey(clientCtx client.Context) (*eciesgo.PrivateKey, error) {
 
 func merkleHelper(argHashpath string) (string, string) {
 
-	//Cut out the / at the end for compatibility with types/merkle-paths.go
+	// Cut out the / at the end for compatibility with types/merkle-paths.go
 	trimPath := strings.TrimSuffix(argHashpath, "/")
 	chunks := strings.Split(trimPath, "/")
 
@@ -52,7 +52,7 @@ func MakeOwnerAddress(merklePath string, user string) string {
 	hash := h.Sum(nil)
 	accountHash := fmt.Sprintf("%x", hash)
 
-	//h1 is so named as to differentiate it from h above--else compiler complains
+	// h1 is so named as to differentiate it from h above--else compiler complains
 	h1 := sha256.New()
 	h1.Write([]byte(fmt.Sprintf("o%s%s", merklePath, accountHash)))
 	hash1 := h1.Sum(nil)

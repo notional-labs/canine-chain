@@ -22,9 +22,9 @@ func (k msgServer) SetCounter(goCtx context.Context, msg *types.MsgSetCounter) (
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "counter already set")
 	}
 
-	//Add yourself as a permitted Sender in the beginning so you can notify yourself
+	// Add yourself as a permitted Sender in the beginning so you can notify yourself
 
-	placeholderMap := make([]string, 0, 1000) //Perhaps I could just use an array
+	placeholderMap := make([]string, 0, 1000) // Perhaps I could just use an array
 	placeholderMap = append(placeholderMap, msg.Creator)
 	marshalledSenders, err := json.Marshal(placeholderMap)
 	if err != nil {

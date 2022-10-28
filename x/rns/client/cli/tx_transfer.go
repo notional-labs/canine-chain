@@ -14,12 +14,12 @@ var _ = strconv.Itoa(0)
 
 func CmdTransfer() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "transfer [name] [reciever]",
+		Use:   "transfer [name] [receiver]",
 		Short: "Broadcast message transfer",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argName := args[0]
-			argReciever := args[1]
+			argReceiver := args[1]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -29,7 +29,7 @@ func CmdTransfer() *cobra.Command {
 			msg := types.NewMsgTransfer(
 				clientCtx.GetFromAddress().String(),
 				argName,
-				argReciever,
+				argReceiver,
 			)
 			if err := msg.ValidateBasic(); err != nil {
 				return err

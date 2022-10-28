@@ -7,10 +7,10 @@ option go_package = "github.com/jackal-dao/canine/x/dsig/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc Uploadfile(MsgUploadfile) returns (MsgUploadfileResponse);
+  rpc Uploadfile(MsgUploadfile) returns (MsgUploadfileResponse);
   rpc Createform(MsgCreateform) returns (MsgCreateformResponse);
   rpc Signform(MsgSignform) returns (MsgSignformResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
 
 message MsgUploadfile {
@@ -18,8 +18,7 @@ message MsgUploadfile {
   string fid = 2;
 }
 
-message MsgUploadfileResponse {
-}
+message MsgUploadfileResponse {}
 
 message MsgCreateform {
   string creator = 1;
@@ -27,9 +26,7 @@ message MsgCreateform {
   string signees = 3;
 }
 
-message MsgCreateformResponse {
-  string ffid = 1;
-}
+message MsgCreateformResponse { string ffid = 1; }
 
 message MsgSignform {
   string creator = 1;
@@ -37,7 +34,6 @@ message MsgSignform {
   int32 vote = 3;
 }
 
-message MsgSignformResponse {
-}
+message MsgSignformResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

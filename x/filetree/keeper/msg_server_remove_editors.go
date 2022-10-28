@@ -24,7 +24,7 @@ func (k msgServer) RemoveEditors(goCtx context.Context, msg *types.MsgRemoveEdit
 		return nil, types.ErrNotOwner
 	}
 
-	//Continue
+	// Continue
 	peacc := file.EditAccess
 
 	jeacc := make(map[string]string)
@@ -45,7 +45,7 @@ func (k msgServer) RemoveEditors(goCtx context.Context, msg *types.MsgRemoveEdit
 
 	k.SetFiles(ctx, file)
 
-	//notify editors
+	// notify editors
 	bool, error := notify(k, ctx, msg.NotifyEditors, msg.NotiForEditors, msg.Creator, file.Address, file.Owner)
 	if !bool {
 		return nil, error

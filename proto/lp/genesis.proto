@@ -11,8 +11,9 @@ option go_package = "github.com/jackal-dao/canine/x/lp/types";
 
 // GenesisState defines the lp module's genesis state.
 message GenesisState {
-  Params params = 1 [(gogoproto.nullable) = false];
-  repeated LPool lPoolList = 2 [(gogoproto.nullable) = false];
-  repeated LProviderRecord lProviderRecordList = 3 [(gogoproto.nullable) = false];
+  Params params = 1 [ (gogoproto.nullable) = false ];
+  repeated LPool lPoolList = 2 [ (gogoproto.nullable) = false ];
+  repeated LProviderRecord lProviderRecordList = 3
+      [ (gogoproto.nullable) = false ];
   // this line is used by starport scaffolding # genesis/proto/state
 }

@@ -39,7 +39,7 @@ func (k Keeper) EstimatePoolRemove(
 		)
 	}
 
-	retuns, err := CalculatePoolShareBurnReturn(pool, burnAmt)
+	returns, err := CalculatePoolShareBurnReturn(pool, burnAmt)
 
 	if err != nil {
 		return nil, sdkerrors.Wrapf(
@@ -48,5 +48,5 @@ func (k Keeper) EstimatePoolRemove(
 		)
 	}
 
-	return &types.QueryEstimatePoolRemoveResponse{Coins: retuns}, nil
+	return &types.QueryEstimatePoolRemoveResponse{Coins: returns}, nil
 }

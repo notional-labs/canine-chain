@@ -8,12 +8,15 @@ option go_package = "github.com/jackal-dao/canine/x/notifications/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc CreateNotifications(MsgCreateNotifications) returns (MsgCreateNotificationsResponse);
-  rpc UpdateNotifications(MsgUpdateNotifications) returns (MsgUpdateNotificationsResponse);
-  rpc DeleteNotifications(MsgDeleteNotifications) returns (MsgDeleteNotificationsResponse);
+  rpc CreateNotifications(MsgCreateNotifications)
+      returns (MsgCreateNotificationsResponse);
+  rpc UpdateNotifications(MsgUpdateNotifications)
+      returns (MsgUpdateNotificationsResponse);
+  rpc DeleteNotifications(MsgDeleteNotifications)
+      returns (MsgDeleteNotificationsResponse);
   rpc SetCounter(MsgSetCounter) returns (MsgSetCounterResponse);
   rpc AddSenders(MsgAddSenders) returns (MsgAddSendersResponse);
-// this line is used by starport scaffolding # proto/tx/rpc
+  // this line is used by starport scaffolding # proto/tx/rpc
 }
 
 message MsgCreateNotifications {
@@ -38,19 +41,15 @@ message MsgDeleteNotifications {
 }
 message MsgDeleteNotificationsResponse {}
 
-message MsgSetCounter {
-  string creator = 1;
-}
+message MsgSetCounter { string creator = 1; }
 
-message MsgSetCounterResponse {
-}
+message MsgSetCounterResponse {}
 
 message MsgAddSenders {
   string creator = 1;
   string senderIds = 2;
 }
 
-message MsgAddSendersResponse {
-}
+message MsgAddSendersResponse {}
 
 // this line is used by starport scaffolding # proto/tx/message

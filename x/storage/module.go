@@ -176,7 +176,7 @@ func (am AppModule) BeginBlock(ctx sdk.Context, _ abci.RequestBeginBlock) { //Ev
 
 	const fchunks int64 = 1024
 
-	var dayBlocks int64 = 14400 //10 blocks is about 1 minute
+	var dayBlocks int64 = 14400 // 10 blocks is about 1 minute
 	dayBlocks = 10 * 5
 
 	fmt.Printf("blockdiff : %d\n", height%dayBlocks)
@@ -264,7 +264,7 @@ func (am AppModule) BeginBlock(ctx sdk.Context, _ abci.RequestBeginBlock) { //Ev
 					provider.BurnedContracts = fmt.Sprintf("%d", curburn.Int64()+1)
 					am.keeper.SetProviders(ctx, provider)
 
-					//Creating new stray file from the burned active deal
+					// Creating new stray file from the burned active deal
 					stray_deal := types.Strays{
 						Cid:      deal.Cid,
 						Fid:      deal.Fid,
